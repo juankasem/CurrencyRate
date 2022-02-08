@@ -35,17 +35,7 @@ namespace CurrencyRate.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CurrencyRate.Api", Version = "v1" });
             });
 
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
-                });
-            });
-
+            services.AddCors();
             services.AddScoped<ICurrencyRateService, CurrencyRateService>();
         }
 

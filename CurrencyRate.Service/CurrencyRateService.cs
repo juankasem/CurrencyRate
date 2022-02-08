@@ -1,4 +1,5 @@
-﻿using CurrencyRate.Domain.Interfaces;
+﻿using CurrencyRate.Domain.Exceptions;
+using CurrencyRate.Domain.Interfaces;
 using CurrencyRate.Domain.Models;
 using Newtonsoft.Json;
 using System;
@@ -25,11 +26,10 @@ namespace CurrencyRate.Service
                 var data = JsonConvert.DeserializeObject<CurrencyRateResponse>(responseContent);
 
                 return data.Data;
-
             }
             catch (Exception ex)
-            {  
-                throw;
+            {
+                throw new DomainException(ex.Message);
             }
         }
     }
